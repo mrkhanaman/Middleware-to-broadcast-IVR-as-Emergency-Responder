@@ -20,40 +20,8 @@ Solution Overview
 
       #1. JSON payload for request from FMS to CxECRDial
       
-            {
-              "reqId": "<unique alphanumeric id>",
-              "ticketNo": "<ticket_no>",
-              "mainSchedule": "<Date/Time>",
-              "reminder1Schedule": "<Date/Time>",
-              "reminder2Schedule": "<Date/Time>",
-              "ttsText": "<speechtext>",
-              "Task": [
-                {
-                  "taskId": "<task id string>",
-                  "dialDN": "<phone no to dial>",
-                  "reminder1Flag": "true/false",
-                  "reminder2Flag": "true/false",
-                  "ackFlag": "true/false"
-                },
-                {
-                  "taskId": "<task id string>",
-                  "dialDN": "<phone no to dial>",
-                  "reminder1Flag": "true/false",
-                  "reminder2Flag": "true/false",
-                  "ackFlag": "true/false"
-                }
-              ]
-            }
-
+           < Confidential Code >
 
       #2. JSON payload for response from CxECRDial to FMS
 
-            {
-              "ticketNo": "<ticket_no>",
-              "taskId": "<task id string>",
-              "dialType": "<main/reminder1/reminder2>",
-              "attemptCount": "<numric. retyr attempts made>",
-              "callStatus":"success/failed",
-              "callDuration":"<time in sec>",
-              "ack":"<true/false>"
-            }
+            < Confidential Code >
