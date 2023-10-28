@@ -1,0 +1,44 @@
+Expected workflow:
+ 
+1.	FMS to initiate a “Auto dialer list for a ticket” with following parameter(s) in a JSON file format using Web Service Interface (Emergency Responder Application to publish this Web Service for FMS to Consume)
+a.	Ticket Number
+b.	Main Schedule Date/Time when the call to be made first (Say 6 Hours before the start of the Maintenance operation)
+c.	1st Reminder Schedule Date/Time (Say 2 hours before the start of the Maintenance)
+d.	2nd Reminder Schedule Date/Time (Say 30 minutes before start of the Maintenance)
+e.	Description of text to be converted to Speech (TTS Text)
+f.	Array of Dialing list or task(s) to be performed
+    i.     Task ID
+    ii.     Number to dial
+    iii.     1st Reminder Flag (Y/N) - this flag indicates that whether the 1st reminder call to be made to this number or not
+    iv.     2nd Reminder Flag (Y/N) - this flag indicates that whether the 2nd reminder call to be made to this number or not
+    v.     Acknowledgement Flag (Whether we need to obtain acknowledgement from the recipient)
+ 
+Note: Not all numbers require the reminder, hence this flag will help to determine which task or number to be redialed.
+ 
+2.	Based on the above list, Emergency Responder Application will perform the dialing and return the following result to FMS using Web Service Interface (FMS will publish this web service for Emergency Responder to Consume)
+ 
+    a.	Ticket Number
+    b.	Task ID
+    c.	Main Schedule Dial Status
+     		i.     Call Status: Successful, Unsuccessful
+        ii.     Call Connection Time
+        iii.     Retry Attempts (if unsuccessful)
+        iv.     Acknowledgement status (if applicable)
+    
+    d.	1st Reminder Dial Status
+        i.     Call Status: Successful, Unsuccessful
+        ii.     Call Connection Time
+        iii.     Retry Attempts (if unsuccessful)
+        iv.     Acknowledgement Status (if applicable)
+    
+    e.	2nd Reminder Dial Status
+         i.     Call Status: Successful, Unsuccessful
+        ii.     Call Connection Time
+        iii.     Retry Attempts (if unsuccessful)
+        iv.     Acknowledgement Status (if applicable)
+ 
+3.	The following features are also expected
+    a.	Ability to allow the user to “replay the message”
+    b.	Ability to provide acknowledgement status upon hearing the message
+    c.	Ability to redial when the call attempt to the caller is unsuccessful (unto three retry attempts are required)
+ 
