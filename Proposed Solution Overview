@@ -1,0 +1,59 @@
+Solution Overview
+
+1.	VIS team will develop an application to meet the requirements mentioned in the previous section 2.
+
+2.	The Application will have the following Modules:
+    a.	API Module – This module would have the following functions:
+        
+        i.	Expose the APIs for FMS Application to consume and submit the Emergency dial out request
+
+        ii.	Consume APIs of FMS application to update the outcome of Call
+
+    b.	Core – This module would be the primary engine responsible to initiate a dial out request along with the messages and process the response of the outcome
+
+    c.	Text to Speech – This module would convert the Text message to an announcement that would be played to the callers. 
+
+    d.	Telephony Module – This module will have SIP trunk established with the Avaya IP office Platform to dial out to the telephone numbers
+
+
+3.	Sample JSON Request/Response format is as mentioned below:
+
+      #1. JSON payload for request from FMS to CxECRDial
+      
+            {
+              "reqId": "<unique alphanumeric id>",
+              "ticketNo": "<ticket_no>",
+              "mainSchedule": "<Date/Time>",
+              "reminder1Schedule": "<Date/Time>",
+              "reminder2Schedule": "<Date/Time>",
+              "ttsText": "<speechtext>",
+              "Task": [
+                {
+                  "taskId": "<task id string>",
+                  "dialDN": "<phone no to dial>",
+                  "reminder1Flag": "true/false",
+                  "reminder2Flag": "true/false",
+                  "ackFlag": "true/false"
+                },
+                {
+                  "taskId": "<task id string>",
+                  "dialDN": "<phone no to dial>",
+                  "reminder1Flag": "true/false",
+                  "reminder2Flag": "true/false",
+                  "ackFlag": "true/false"
+                }
+              ]
+            }
+
+
+      #2. JSON payload for response from CxECRDial to FMS
+
+            {
+              "ticketNo": "<ticket_no>",
+              "taskId": "<task id string>",
+              "dialType": "<main/reminder1/reminder2>",
+              "attemptCount": "<numric. retyr attempts made>",
+              "callStatus":"success/failed",
+              "callDuration":"<time in sec>",
+              "ack":"<true/false>"
+            }
